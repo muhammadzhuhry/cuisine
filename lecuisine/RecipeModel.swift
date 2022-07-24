@@ -10,6 +10,7 @@ import Foundation
 struct RecipeModel {
     let id: Int
     let name: String
+    let image: String
     let ingridient: [IngridientModel]
     let steps: [String]
     let timers: [Int]
@@ -24,6 +25,7 @@ let RecipeData = [
     RecipeModel(
         id: 1,
         name: "Crock Pot Roast",
+        image: "food-1",
         ingridient: [
             IngridientModel(
                 quantity: "1", name: "Beef roast"
@@ -57,6 +59,7 @@ let RecipeData = [
     RecipeModel(
         id: 2,
         name: "Roasted Asparagus",
+        image: "food-3",
         ingridient: [
             IngridientModel(
                 quantity: "1 lb", name: "Asparagus"
@@ -96,6 +99,7 @@ let RecipeData = [
     RecipeModel(
         id: 3,
         name: "Curried Lentils and Rice",
+        image: "food-2",
         ingridient: [
             IngridientModel(
                 quantity: "1 quart", name: "Beef broth"
@@ -131,6 +135,7 @@ let RecipeData = [
     RecipeModel(
         id: 4,
         name: "Big Night Pizza",
+        image: "food-4",
         ingridient: [
             IngridientModel(
                 quantity: "5 tsp", name: "Yeast"
