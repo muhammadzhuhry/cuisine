@@ -9,7 +9,19 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Home()
+        TabView {
+            Home()
+                .tabItem {
+                    Image(systemName: "house")
+                    Text("Home")
+                }
+            
+            Profile()
+                .tabItem {
+                    Image(systemName: "person.circle")
+                    Text("About")
+                }
+        }
     }
 }
 
@@ -19,24 +31,24 @@ struct ContentView_Previews: PreviewProvider {
     }
 }
 
-struct Header: View {
-    var body: some View {
-        VStack(alignment: .leading) {
-            Text("Hello John,").font(.headline)
-            Text("What are you cooking today?").font(.caption)
-        }
-    }
-}
-
 struct Home: View {
     init() {
-//        UITableView.appearance().backgroundColor = .clear
+        //        UITableView.appearance().backgroundColor = .clear
     }
     var body: some View {
         VStack(alignment: .leading) {
             Header()
                 .padding(.leading)
             HomeContent()
+        }
+    }
+}
+
+struct Header: View {
+    var body: some View {
+        VStack(alignment: .leading) {
+            Text("Hello John,").font(.headline)
+            Text("What are you cooking today?").font(.caption)
         }
     }
 }
@@ -103,5 +115,11 @@ struct HomeContent: View {
             }.listRowSeparator(.hidden)
         }
         .listStyle(.plain)
+    }
+}
+
+struct Profile: View {
+    var body: some View {
+        Text("This is profile")
     }
 }
