@@ -9,13 +9,21 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        Text("Lecuisine app!")
-            .padding()
+        Header()
     }
 }
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+    }
+}
+
+struct Header: View {
+    var body: some View {
+        VStack(alignment: .leading) {
+            Text("Hello John").font(.headline)
+            Text("What are you cooking today?").font(.caption)
+        }
     }
 }
