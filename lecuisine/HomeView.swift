@@ -15,9 +15,6 @@ struct Home: View {
         VStack(alignment: .leading) {
             Header()
                 .padding(.leading)
-            SearchBar()
-                .padding(.leading)
-                .padding(.trailing)
             HomeContent()
         }
     }
@@ -33,12 +30,12 @@ struct Header: View {
 }
 
 struct SearchBar: View {
-    @State private var searchText: String = ""
+    @Binding var text: String
     @State private var isEditing = false
     
     var body: some View {
         HStack {
-            TextField("Search recipe...", text: $searchText)
+            TextField("Search recipe...", text: $text)
                 .padding(10)
                 .background(Color(.systemGray6))
                 .cornerRadius(8)
@@ -49,7 +46,7 @@ struct SearchBar: View {
             if isEditing {
                 Button(action: {
                     self.isEditing = false
-                    self.searchText = ""
+                    self.text = ""
                 }){
                     Text("Cancel")
                 }
@@ -65,7 +62,10 @@ struct HomeContent: View {
     @State private var searchText: String = ""
     var menuList = RecipeData
     var body: some View {
-        List(menuList) { menu in
+        SearchBar(text: $searchText)
+            .padding(.leading)
+            .padding(.trailing)
+        List(results) { menu in
             NavigationLink(destination: MenuView(menu: menu.name)) {
                 HStack(alignment: .top) {
                     Image(menu.image)
@@ -97,6 +97,14 @@ struct HomeContent: View {
                 }
             }.listRowSeparator(.hidden)
         }.listStyle(.plain)
+    }
+    
+    var results: [RecipeModel] {
+        if searchText.isEmpty {
+            return RecipeData
+        } else {
+            return RecipeData.filter { $0.name.contains(searchText) }
+        }
     }
 }
 
