@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct RecipeModel {
+struct RecipeModel: Identifiable {
     let id: Int
     let name: String
     let image: String
@@ -21,7 +21,7 @@ struct IngridientModel {
     let name: String
 }
 
-let RecipeData = [
+let recipeData = [
     RecipeModel(
         id: 1,
         name: "Crock Pot Roast",
