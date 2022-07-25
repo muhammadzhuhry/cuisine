@@ -21,7 +21,7 @@ struct IngridientModel {
     let name: String
 }
 
-let recipeData = [
+let RecipeData = [
     RecipeModel(
         id: 1,
         name: "Crock Pot Roast",
