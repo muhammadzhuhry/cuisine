@@ -9,7 +9,7 @@ import SwiftUI
 
 struct Home: View {
     init() {
-        //        UITableView.appearance().backgroundColor = .clear
+        //                UITableView.appearance().backgroundColor = .clear
     }
     var body: some View {
         VStack(alignment: .leading) {
@@ -66,7 +66,7 @@ struct HomeContent: View {
             .padding(.leading)
             .padding(.trailing)
         List(results) { menu in
-            NavigationLink(destination: MenuView(menu: menu.name)) {
+            NavigationLink(destination: RecipeView(detailRecipe: menu)) {
                 HStack(alignment: .top) {
                     Image(menu.image)
                         .resizable()
