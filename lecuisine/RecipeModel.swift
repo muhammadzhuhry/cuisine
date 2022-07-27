@@ -16,7 +16,7 @@ struct RecipeModel: Identifiable {
     let timers: [Int]
 }
 
-struct IngridientModel {
+struct IngridientModel: Hashable {
     let quantity: String
     let name: String
 }
