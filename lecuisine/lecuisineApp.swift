@@ -9,9 +9,21 @@ import SwiftUI
 
 @main
 struct lecuisineApp: App {
+    @State var isActive = false
     var body: some Scene {
         WindowGroup {
-            RootView()
+            if isActive {
+                RootView()
+            } else {
+                SplashscreenView()
+                    .onAppear {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                            withAnimation {
+                                self.isActive = true
+                            }
+                        }
+                    }
+            }
         }
     }
 }
