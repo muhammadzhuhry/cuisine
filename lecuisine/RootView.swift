@@ -17,6 +17,12 @@ struct RootView: View {
                         Text("Home")
                     }
                 
+                SavedRecipe()
+                    .tabItem {
+                        Image(systemName: "bookmark")
+                        Text("Favorite")
+                    }
+
                 About()
                     .tabItem {
                         Image(systemName: "person.circle")
