@@ -26,7 +26,8 @@ struct RootView: View {
             .navigationTitle("")
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarHidden(true)
-        }
+            .accentColor(Color("primary"))
+        }.accentColor(Color("primary"))
     }
 }
 

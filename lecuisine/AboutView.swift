@@ -32,6 +32,7 @@ struct About: View {
                 Text("Le Cuisine")
                     .font(.largeTitle)
                     .fontWeight(.medium)
+                    .foregroundColor(Color("primary"))
                 Text("v1.0.0")
                     .font(.callout)
             }.foregroundColor(Color.gray)
