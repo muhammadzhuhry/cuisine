@@ -37,8 +37,27 @@ struct SearchBar: View {
         HStack {
             TextField("Search recipe...", text: $text)
                 .padding(10)
+                .padding(.horizontal, 25)
                 .background(Color(.systemGray6))
                 .cornerRadius(8)
+                .overlay(
+                    HStack {
+                        Image(systemName: "magnifyingglass")
+                            .foregroundColor(Color.gray)
+                            .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+                            .padding(.leading, 8)
+                        
+                        if isEditing {
+                            Button(action: {
+                                self.text = ""
+                            }) {
+                                Image(systemName: "multiply.circle.fill")
+                                    .foregroundColor(Color.gray)
+                                    .padding(.trailing, 8)
+                            }
+                        }
+                    }
+                )
                 .onTapGesture {
                     self.isEditing = true
                 }
