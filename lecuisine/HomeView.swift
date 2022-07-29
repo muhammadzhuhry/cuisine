@@ -79,7 +79,7 @@ struct SearchBar: View {
 
 struct HomeContent: View {
     @State private var searchText: String = ""
-    var menuList = RecipeData
+
     var body: some View {
         SearchBar(text: $searchText)
             .padding(.leading)
@@ -124,14 +124,6 @@ struct HomeContent: View {
         } else {
             return RecipeData.filter { $0.name.contains(searchText) }
         }
-    }
-}
-
-struct MenuView: View {
-    var menu: String
-    
-    var body: some View {
-        Text("Menu: \(menu)")
     }
 }
 
