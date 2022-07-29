@@ -16,7 +16,6 @@ struct RecipeView: View {
                 .renderingMode(.original)
                 .frame(width: 350, height: 250)
                 .cornerRadius(20)
-            //            Spacer()
             HStack {
                 Text(detailRecipe.name)
                     .font(.title2)
@@ -64,6 +63,6 @@ struct RecipeView: View {
 
 struct RecipeView_Previews: PreviewProvider {
     static var previews: some View {
-        RecipeView(detailRecipe: RecipeData[0])
+        RecipeView(detailRecipe: ResponseSample.data[0])
     }
 }
