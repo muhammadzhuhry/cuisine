@@ -8,9 +8,6 @@
 import SwiftUI
 
 struct Home: View {
-//    init() {
-//        //                UITableView.appearance().backgroundColor = .clear
-//    }
     var body: some View {
         VStack(alignment: .leading) {
             Header()
@@ -71,7 +68,6 @@ struct SearchBar: View {
                 }
                 .padding(.trailing, 10)
                 .transition(.move(edge: .trailing))
-                //                .animation(.default)
             }
         }
     }
