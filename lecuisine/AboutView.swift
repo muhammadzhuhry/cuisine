@@ -35,7 +35,7 @@ struct About: View {
                     .foregroundColor(Color("primary"))
                 Text("v1.0.0")
                     .font(.callout)
-            }.foregroundColor(Color.gray)
+            }.padding(.bottom, 35.0).foregroundColor(Color.gray)
         }
     }
 }
