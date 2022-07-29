@@ -8,9 +8,9 @@
 import SwiftUI
 
 struct Home: View {
-    init() {
-        //                UITableView.appearance().backgroundColor = .clear
-    }
+//    init() {
+//        //                UITableView.appearance().backgroundColor = .clear
+//    }
     var body: some View {
         VStack(alignment: .leading) {
             Header()
@@ -95,7 +95,7 @@ struct HomeContent: View {
                         .cornerRadius(20)
                     
                     VStack(alignment: .leading, spacing: 5.0) {
-                        Text(menu.name).font(.headline)
+                        Text(menu.name).font(.headline).lineLimit(2)
                         
                         HStack {
                             Image(systemName: "heart.fill")
