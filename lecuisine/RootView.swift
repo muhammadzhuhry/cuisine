@@ -8,32 +8,38 @@
 import SwiftUI
 
 struct RootView: View {
+    init() {
+        UITabBar.appearance().isTranslucent = false
+    }
     var body: some View {
         NavigationView {
-            TabView {
-                Home()
-                    .tabItem {
-                        Image(systemName: "house")
-                        Text("Home")
-                    }
-                
-                SavedRecipe()
-                    .tabItem {
-                        Image(systemName: "bookmark")
-                        Text("Favorite")
-                    }
-
-                About()
-                    .tabItem {
-                        Image(systemName: "person.circle")
-                        Text("About")
-                    }
+            ZStack {
+                TabView {
+                    Home()
+                        .tabItem {
+                            Image(systemName: "house")
+                            Text("Home")
+                        }
+                    
+                    SavedRecipe()
+                        .tabItem {
+                            Image(systemName: "bookmark")
+                            Text("Favorite")
+                        }
+                    
+                    About()
+                        .tabItem {
+                            Image(systemName: "person.circle")
+                            Text("About")
+                        }
+                }
+                .navigationTitle("")
+                .navigationBarTitleDisplayMode(.inline)
+                .navigationBarHidden(true)
+                //            .accentColor(Color("primary"))
             }
-            .navigationTitle("")
-            .navigationBarTitleDisplayMode(.inline)
-            .navigationBarHidden(true)
-            .accentColor(Color("primary"))
-        }.accentColor(Color("primary"))
+        }
+        .accentColor(Color("primary"))
     }
 }
 
