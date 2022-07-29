@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct RecipeModel: Identifiable {
+struct RecipeModel: Codable, Identifiable {
     let id: Int
     let name: String
     let image: String
@@ -16,7 +16,7 @@ struct RecipeModel: Identifiable {
     let timers: [Int]
 }
 
-struct IngridientModel: Hashable {
+struct IngridientModel: Codable, Hashable {
     let quantity: String
     let name: String
 }
@@ -182,3 +182,72 @@ let RecipeData = [
         ]
     )
 ]
+
+struct Response: Codable {
+    let error: Bool
+    let message: String
+    let code: Int
+    let data: [RecipeModel]
+}
+
+//struct Recipes {
+//    let recipes: [RecipeModel]
+//}
+
+let ResponseSample = Response(
+    error: true,
+    message: "error",
+    code: 404,
+    data: [
+        RecipeModel(
+            id: 1,
+            name: "Crock Pot Roast",
+            image: "food-1",
+            ingridient: [
+                IngridientModel(
+                    quantity: "1", name: "Beef roast"
+                ),
+                IngridientModel(
+                    quantity: "1 pkg", name: "Brown gravy mix"
+                ),
+                IngridientModel(
+                    quantity: "1 pkg", name: "Dried Italian salad dressing mix"
+                ),
+                IngridientModel(
+                    quantity: "1 pkg", name: "Dry ranch dressing mix"
+                ),
+                IngridientModel(
+                    quantity: "1/2 cup", name: "Water"
+                )
+            ],
+            steps: [
+                "Place beef roast in crock pot.",
+                "Mix the dried mixes together in a bowl and sprinkle over the roast.",
+                "Pour the water around the roast.",
+                "Cook on low for 7-9 hours."
+            ],
+            timers: [
+                0,
+                0,
+                0,
+                420
+            ]
+        )
+    ]
+)
+
+class APIRecipe {
+    func getRecipes(completion:@escaping (Response) -> ()) {
+        guard let url = URL(string: "https://muhammadzhuhry.github.io/json/recipeData.json") else { return }
+        URLSession.shared.dataTask(with: url) { (data, _,_) in
+            let recipes = try! JSONDecoder().decode(Response.self, from: data!)
+
+            print(recipes)
+
+            DispatchQueue.main.async {
+                completion(recipes)
+            }
+        }
+        .resume()
+    }
+}
