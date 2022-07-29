@@ -26,7 +26,7 @@ struct SplashscreenView: View {
                         .foregroundColor(Color.white)
                         .padding(.top)
                 }.padding(.bottom, 200)
-
+                
                 Text("Get \nCooking")
                     .font(.largeTitle)
                     .foregroundColor(Color.white)
