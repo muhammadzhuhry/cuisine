@@ -15,7 +15,7 @@ struct Home: View {
         VStack(alignment: .leading) {
             Header()
                 .padding(.leading)
-            HomeContent()
+            HomeContent(recipe: ResponseSample)
         }
     }
 }
@@ -79,7 +79,8 @@ struct SearchBar: View {
 
 struct HomeContent: View {
     @State private var searchText: String = ""
-
+    @State var recipe: Response
+    
     var body: some View {
         SearchBar(text: $searchText)
             .padding(.leading)
@@ -115,14 +116,20 @@ struct HomeContent: View {
                     }
                 }
             }.listRowSeparator(.hidden)
-        }.listStyle(.plain)
+        }
+        .listStyle(.plain)
+        .onAppear {
+            APIRecipe().getRecipes { (recipes) in
+                self.recipe = recipes
+            }
+        }
     }
     
     var results: [RecipeModel] {
         if searchText.isEmpty {
-            return RecipeData
+            return recipe.data
         } else {
-            return RecipeData.filter { $0.name.contains(searchText) }
+            return recipe.data.filter { $0.name.contains(searchText) }
         }
     }
 }
