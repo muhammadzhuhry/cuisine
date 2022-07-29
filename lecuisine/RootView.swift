@@ -9,6 +9,7 @@ import SwiftUI
 
 struct RootView: View {
     init() {
+        // isTranslucent(false) will made the Tab bar not Transparent
         UITabBar.appearance().isTranslucent = false
     }
     var body: some View {

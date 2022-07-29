@@ -17,6 +17,7 @@ struct Home: View {
     }
 }
 
+// This Header using for greating to the user
 struct Header: View {
     var body: some View {
         VStack(alignment: .leading) {
@@ -26,6 +27,7 @@ struct Header: View {
     }
 }
 
+// Searchbar design
 struct SearchBar: View {
     @Binding var text: String
     @State private var isEditing = false
@@ -78,9 +80,12 @@ struct HomeContent: View {
     @State var recipe: Response
     
     var body: some View {
+        // Showed the text that user type
         SearchBar(text: $searchText)
             .padding(.leading)
             .padding(.trailing)
+        
+        // This list will iterate over the result that have been filtered by search logic
         List(results) { menu in
             NavigationLink(destination: RecipeView(detailRecipe: menu)) {
                 HStack(alignment: .top) {
@@ -115,12 +120,14 @@ struct HomeContent: View {
         }
         .listStyle(.plain)
         .onAppear {
+            // getRecipes will be called then it will add to the recipe that will be consume / filtered at search logic
             APIRecipe().getRecipes { (recipes) in
                 self.recipe = recipes
             }
         }
     }
     
+    // This is the search logic if searchText is empty it will return the raw data
     var results: [RecipeModel] {
         if searchText.isEmpty {
             return recipe.data

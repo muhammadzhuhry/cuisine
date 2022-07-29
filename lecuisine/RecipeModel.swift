@@ -28,6 +28,7 @@ struct Response: Codable {
     let data: [RecipeModel]
 }
 
+// ResponseSample will become the data state that first passed at HomeContent(resipe: ResponseSample)
 let ResponseSample = Response(
     error: false,
     message: "success get recipes data",
@@ -196,12 +197,11 @@ let ResponseSample = Response(
 )
 
 class APIRecipe {
+    // This function fot getting data json
     func getRecipes(completion:@escaping (Response) -> ()) {
         guard let url = URL(string: "https://muhammadzhuhry.github.io/json/recipeData.json") else { return }
         URLSession.shared.dataTask(with: url) { (data, _,_) in
             let recipes = try! JSONDecoder().decode(Response.self, from: data!)
-            
-            print(recipes)
             
             DispatchQueue.main.async {
                 completion(recipes)

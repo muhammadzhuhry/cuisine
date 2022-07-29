@@ -12,6 +12,8 @@ struct lecuisineApp: App {
     @State var isActive = false
     var body: some Scene {
         WindowGroup {
+            
+            // splashscreen will appear for the first time after that, RootView will be called
             if isActive {
                 RootView()
             } else {
