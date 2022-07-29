@@ -190,10 +190,6 @@ struct Response: Codable {
     let data: [RecipeModel]
 }
 
-//struct Recipes {
-//    let recipes: [RecipeModel]
-//}
-
 let ResponseSample = Response(
     error: true,
     message: "error",
@@ -241,9 +237,9 @@ class APIRecipe {
         guard let url = URL(string: "https://muhammadzhuhry.github.io/json/recipeData.json") else { return }
         URLSession.shared.dataTask(with: url) { (data, _,_) in
             let recipes = try! JSONDecoder().decode(Response.self, from: data!)
-
+            
             print(recipes)
-
+            
             DispatchQueue.main.async {
                 completion(recipes)
             }
